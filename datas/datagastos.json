@@ -1,0 +1,17 @@
+[
+    {
+        "monto": 1000,
+        "categoria": "comida",
+        "descripcion": "No proporcionada"
+    },
+    {
+        "monto": 2000,
+        "categoria": "transporte",
+        "descripcion": "No proporcionada"
+    },
+    {
+        "monto": 3000,
+        "categoria": "entretenimiento",
+        "descripcion": "No proporcionada"
+    }
+]
