@@ -1,6 +1,9 @@
 import os
 import json
-from server.mainMenu import designMainMenu
+from menu.mainMenu import designMainMenu
+from logica.fechas import asignar_fecha
+
+#Lista para almacenar los nuevos gastos a el archivo JSON
 
 def designRegistrar():
     # Ruta del archivo JSON donde se guardarán los datos
@@ -43,37 +46,47 @@ Ingrese 'S' para guardar o 'C' para cancelar.
                 'descripcion': descripcion
             }
 
+            #Asignar fecha automaticamente al gasto
+            nuevo_gasto=asignar_fecha(nuevo_gasto)
+
             # Leer siempre el archivo para obtener los datos existentes
             if os.path.exists(ruta):
                 try:
                     with open(ruta, 'r') as f:
                         # Intentar cargar los datos del archivo JSON
                         try:
-                            datos_existentes = json.load(f)
+                            gasto = json.load(f)
                         except json.JSONDecodeError:
                             # Si el archivo está vacío o es corrupto, inicializar como una lista vacía
-                            datos_existentes = []
+                            gastos = []
                 except FileNotFoundError:
                     # Si el archivo no existe, inicializar como una lista vacía
-                    datos_existentes = []
+                    gasto = []
             else:
                 # Si el archivo no existe, inicializar como una lista vacía
-                datos_existentes = []
+                gasto = []
+
+            #Asignamos un numero a cada gasto
+            num_gasto=len(gastos)+1
+            nombre_gasto=f'gasto {num_gasto}'
+
+            #Asiganmos a cada diccionario el nombre gasto
+            nombre_gasto={nombre_gasto: nuevo_gasto}
 
             # Agregar el nuevo gasto a los datos existentes
-            datos_existentes.append(nuevo_gasto)
+            gastos.append(nombre_gasto)
 
             # Guardar los datos actualizados en el archivo JSON
             with open(ruta, 'w') as f:
-                json.dump(datos_existentes, f, indent=4)
+                json.dump(nombre_gasto, f, indent=4)
 
-            os.system('clear')
+            os.system('cls')
             print("\n¡Gasto registrado con éxito!")
             return designMainMenu()
 
         elif save_cancel.upper() == 'C':
             # Si se cancela el registro
-            os.system('clear')
+            os.system('cls')
             print("\nEl registro ha sido cancelado.")
             return designMainMenu()
 
@@ -81,17 +94,17 @@ Ingrese 'S' para guardar o 'C' para cancelar.
             # Si la opción es inválida
             print("\nOpción no válida. Solo se permite 'S' para guardar o 'C' para cancelar.")
             input("\nPresione Enter para continuar.")
-            os.system('clear')
+            os.system('cls')
             designRegistrar()  # Reintentar el registro
 
     # Evaluar errores en la entrada de datos
     except ValueError as e:
         print(f"\nError: {e}")
         input("\n-Los datos utilizados no son válidos. ¡Presione Enter para continuar y seleccione una opción del menú!")
-        os.system('clear')
+        os.system('cls')
         designRegistrar()
 
     # Manejo de interrupciones por el teclado (Ctrl + C)
     except KeyboardInterrupt:
         input("\n-Señor usuario no presione 'Ctrl + C', ¡Presione Enter para continuar y seleccione una opción del menú!")
-        os.system('clear')
+        os.system('cls')

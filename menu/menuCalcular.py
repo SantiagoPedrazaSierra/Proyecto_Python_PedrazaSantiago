@@ -2,7 +2,7 @@ import os
 
 
 def designMenuCalcular():
-    from server.mainMenu import designMainMenu
+    from menu.mainMenu import designMainMenu
     try:
         opcion=int(input("""
     =============================================
@@ -19,13 +19,13 @@ def designMenuCalcular():
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
             case 2:
-                os.system('clear')
+                os.system('cls')
             case 3:
-                os.system('clear')
+                os.system('cls')
             case 4:
-                os.system('clear')
+                os.system('cls')
                 designMainMenu()
             case _: print("Opcion no valida")
     except ValueError:

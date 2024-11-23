@@ -1,3 +1,3 @@
-from server.mainMenu import designMainMenu
+from menu.mainMenu import designMainMenu
 
 designMainMenu()

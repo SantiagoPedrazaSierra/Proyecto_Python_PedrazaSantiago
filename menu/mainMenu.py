@@ -1,9 +1,9 @@
 import os 
 def designMainMenu():
-    from menus.menuRegistrar import designRegistrar 
-    from menus.menuListar import designMenuListar
-    from menus.menuCalcular import designMenuCalcular
-    from menus.menuReporteGatos import designMenuReportGastos
+    from menu.menuRegistrar import designRegistrar 
+    from menu.menuListar import designMenuListar
+    from menu.menuCalcular import designMenuCalcular
+    from menu.menuReporteGatos import designMenuReportGastos
 
 
     try:
@@ -23,16 +23,16 @@ def designMainMenu():
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
                 designRegistrar()
             case 2:
-                os.system('clear')
+                os.system('cls')
                 designMenuListar()
             case 3:
-                os.system('clear')
+                os.system('cls')
                 designMenuCalcular()
             case 4:
-                os.system('clear')
+                os.system('cls')
                 designMenuReportGastos()
             case 5:
                 print("\n-Saliendo del programa...")

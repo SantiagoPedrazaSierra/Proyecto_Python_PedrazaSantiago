@@ -1,17 +1,18 @@
 [
     {
-        "monto": 1000,
-        "categoria": "comida",
-        "descripcion": "No proporcionada"
+        "gasto 1": {
+            "monto": 1000,
+            "categoria": "comida",
+            "descripcion": "No proporcionada",
+            "fecha:": "23-11-2024"
+        }
     },
     {
-        "monto": 2000,
-        "categoria": "transporte",
-        "descripcion": "No proporcionada"
-    },
-    {
-        "monto": 3000,
-        "categoria": "entretenimiento",
-        "descripcion": "No proporcionada"
+        "gasto 2": {
+            "monto": 10000,
+            "categoria": "entretenimiento",
+            "descripcion": "No proporcionada",
+            "fecha:": "23-11-2024"
+        }
     }
 ]

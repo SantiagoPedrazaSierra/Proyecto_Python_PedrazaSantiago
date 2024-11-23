@@ -1,34 +1,32 @@
 import os 
 
-def designMenuListar():
-    from server.mainMenu import designMainMenu
+def designMenuReportGastos():
+    from menu.mainMenu import designMainMenu
 
     try:
         opcion=int(input("""
     =============================================
-                Listar Gastos
+           Generar Reporte de Gastos
     =============================================
-    Seleccione una opción para filtrar los gastos:
-    =============================================
-    1. Ver todos los gastos
-    2. Filtrar por categoría
-    3. Filtrar por rango de fechas
+    Seleccione el tipo de reporte:
+
+    1. Reporte diario
+    2. Reporte semanal
+    3. Reporte mensual
     4. Regresar al menú principal
     ============================================= 
     -ingrese un numero del (1-4): """))
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
             case 2:
-                os.system('clear')
+                os.system('cls')
             case 3:
-                os.system('clear')
+                os.system('cls')
             case 4:
-                os.system('clear')
-                designMainMenu() 
+                os.system('cls')
+                designMainMenu()
             case _: print("Opcion no valida")
     except ValueError:
         print("Por favor, ingrese un numero valido.")
-
-        
