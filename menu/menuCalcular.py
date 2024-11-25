@@ -1,9 +1,11 @@
 import os 
+import keyboard
 from menu.mainMenu import designMainMenu
 from logica.calculations import calculos
 def designMenuCalcular():
     
     try:
+        keyboard.is_pressed('ctrl+c')
         opcion=int(input("""
     =============================================
           Calcular Total de Gastos
@@ -19,21 +21,28 @@ def designMenuCalcular():
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
                 calculos("diario")
                 designMainMenu()
             case 2:
-                os.system('clear')
+                os.system('cls')
                 calculos("semanal")
                 designMainMenu()
             case 3:
-                os.system('clear')
+                os.system('cls')
                 calculos("mensual")
                 designMainMenu()
             case 4:
-                os.system('clear')
+                os.system('cls')
                 designMainMenu()
                 
             case _: print("Opcion no valida")
     except ValueError:
-        print("Por favor, ingrese un numero valido.")
+        print("\nPor favor, ingrese un número válido.")
+        input("Presione Enter para continuar...")
+        os.system('cls')
+        designMenuCalcular()
+    except KeyboardInterrupt:
+        input("\n-Señor usuario no presione 'Ctrl + C'¡Presione Enter para continuar y seleccione una opcion del menu!")
+        os.system('cls')
+        designMenuCalcular()

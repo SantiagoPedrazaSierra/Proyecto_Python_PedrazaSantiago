@@ -1,4 +1,5 @@
 import os 
+import keyboard 
 def designMainMenu():
     from menu.menuRegistrar import designRegistrar 
     from menu.menuListar import designMenuListar
@@ -7,6 +8,7 @@ def designMainMenu():
 
 
     try:
+        keyboard.is_pressed('ctrl+c')
         opcion=int(input("""
     =============================================
             Simulador de Gasto Diario
@@ -23,26 +25,30 @@ def designMainMenu():
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
                 designRegistrar()
             case 2:
-                os.system('clear')
+                os.system('cls')
                 designMenuListar()
             case 3:
-                os.system('clear')
+                os.system('cls')
                 designMenuCalcular()
             case 4:
-                os.system('clear')
+                os.system('cls')
                 designMenuReportGastos()
             case 5:
                 print("\n-Saliendo del programa...")
                 os._exit 
             case _: print("Opcion no valida")
     except ValueError:
-        os.system('clear')
-        print("Por favor, ingrese un numero valido.")
+        print("\nPor favor, ingrese un número válido.")
+        input("Presione Enter para continuar...")
+        os.system('cls')
         designMainMenu()
-
+    except KeyboardInterrupt:
+        input("\n-Señor usuario no presione 'Ctrl + C'¡Presione Enter para continuar y seleccione una opcion del menu!")
+        os.system('cls')
+        designMainMenu()
         
 
         

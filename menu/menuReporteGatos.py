@@ -1,10 +1,12 @@
 import os 
+import keyboard
 from logica.reporte import generar_reporte
 from menu.mainMenu import designMainMenu
 def designMenuReportGastos():
     
 
     try:
+        keyboard.is_pressed('ctrl+c')
         opcion=int(input("""
     =============================================
            Generar Reporte de Gastos
@@ -20,20 +22,27 @@ def designMenuReportGastos():
         
         match opcion:
             case 1:
-                os.system('clear')
+                os.system('cls')
                 generar_reporte("diario")
                 designMainMenu()
             case 2:
-                os.system('clear')
+                os.system('cls')
                 generar_reporte("semanal")
                 designMainMenu()
             case 3:
-                os.system('clear')
+                os.system('cls')
                 generar_reporte("mensual")
                 designMainMenu()
             case 4:
-                os.system('clear')
+                os.system('cls')
                 designMainMenu()
             case _: print("Opcion no valida")
     except ValueError:
-        print("Por favor, ingrese un numero valido.")
+        print("\nPor favor, ingrese un número válido.")
+        input("Presione Enter para continuar...")
+        os.system('cls')
+        designMenuReportGastos()
+    except KeyboardInterrupt:
+        input("\n-Señor usuario no presione 'Ctrl + C'¡Presione Enter para continuar y seleccione una opcion del menu!")
+        os.system('cls')
+        designMenuReportGastos()

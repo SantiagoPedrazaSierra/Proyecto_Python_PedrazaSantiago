@@ -1,11 +1,14 @@
 import os
 import json
+import keyboard
 from menu.mainMenu import designMainMenu
 from datetime import datetime
 
 def designMenuListar():
     ruta = 'datas/datagastos.json'
     try:
+        keyboard.is_pressed('ctrl+c')
+
         # Cargar los datos del archivo JSON
         if os.path.exists(ruta):
             with open(ruta, 'r') as f:
@@ -39,7 +42,7 @@ def designMenuListar():
             case 1:
                 # Listar todos los gastos
                 if gastos:
-                    os.system('clear')
+                    os.system('cls')
                     print("\nLista de gastos:")
                     for i, gasto in enumerate(gastos, start=1):
                         print(f"\nGasto {i}:")
@@ -59,7 +62,7 @@ def designMenuListar():
                 gastos_filtrados = [gasto for gasto in gastos if categoria in gasto.get('categoria', '').lower()]
 
                 if gastos_filtrados:
-                    os.system('clear')
+                    os.system('cls')
                     print("\nGastos filtrados por categoría:")
                     for i, gasto in enumerate(gastos_filtrados, start=1):
                         print(f"\nGasto {i}:")
@@ -68,7 +71,7 @@ def designMenuListar():
                         print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
                         print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
                 else:
-                    os.system('clear')
+                    os.system('cls')
                     print("No se encontraron gastos para esa categoría.")
 
                 designMenuListar()
@@ -97,7 +100,7 @@ def designMenuListar():
                         continue
 
                 if gastos_filtrados:
-                    os.system('clear')
+                    os.system('cls')
                     print("\nGastos filtrados por rango de fechas:")
                     for i, gasto in enumerate(gastos_filtrados, start=1):
                         print(f"\nGasto {i}:")
@@ -106,21 +109,25 @@ def designMenuListar():
                         print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
                         print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
                 else:
-                    os.system('clear')
+                    os.system('cls')
                     print("No se encontraron gastos en el rango de fechas especificado.")
 
                 designMenuListar()
 
             case 4:
                 # Regresar al menú principal
-                os.system('clear')
+                os.system('cls')
                 designMainMenu()
 
             case _:
                 print("Opción no válida.")
 
     except ValueError:
-        print("Por favor, ingrese un número válido.")
+        print("\nPor favor, ingrese un número válido.")
         input("Presione Enter para continuar...")
-        os.system('clear')
+        os.system('cls')
         designMenuListar()  # Volver a mostrar el menú
+    except KeyboardInterrupt:
+        input("\n-Señor usuario no presione 'Ctrl + C'¡Presione Enter para continuar y seleccione una opcion del menu!")
+        os.system('cls')
+        designMenuListar()

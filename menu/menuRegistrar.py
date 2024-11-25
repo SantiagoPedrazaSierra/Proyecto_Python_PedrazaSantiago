@@ -1,5 +1,6 @@
 import os
 import json
+import keyboard
 from datetime import datetime,timedelta
 from menu.mainMenu import designMainMenu
 from logica.fechas import asignar_fecha
@@ -14,6 +15,8 @@ def designRegistrar():
 Ingrese la información del gasto:""")
 
     try:
+        keyboard.is_pressed('ctrl+c')
+
         # Ingreso de datos
         monto_gasto = int(input("  - Monto del gasto: "))
         if monto_gasto < 0:
@@ -62,26 +65,28 @@ Ingrese 'S' para guardar o 'C' para cancelar.
             with open(ruta, 'w') as f:
                 json.dump(datos, f, indent=4)
 
-            os.system('clear')
+            os.system('cls')
             print("\n¡Gasto registrado con éxito!")
             return designMainMenu()
 
         elif save_cancel == 'C':
-            os.system('clear')
+            os.system('cls')
             print("\nEl registro ha sido cancelado.")
             return designMainMenu()
         else:
             print("\nOpción no válida. Intente de nuevo.")
             input("\nPresione Enter para continuar.")
-            os.system('clear')
+            os.system('cls')
             designRegistrar()
 
     except ValueError as e:
         print(f"\nError: {e}")
         input("\n-Los datos utilizados no son válidos. ¡Presione Enter para continuar!")
-        os.system('clear')
+        os.system('cls')
         designRegistrar()
 
     except KeyboardInterrupt:
         input("\n-No presione 'Ctrl + C'. ¡Presione Enter para continuar!")
-        os.system('clear')
+        os.system('cls')
+        designRegistrar()
+

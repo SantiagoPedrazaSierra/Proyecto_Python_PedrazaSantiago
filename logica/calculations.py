@@ -87,4 +87,4 @@ def calculos(periodo):
     print(calculo)
 
     input("\nPresione Enter para regresar al menú principal.")
-    os.system('clear')
+    os.system('cls')

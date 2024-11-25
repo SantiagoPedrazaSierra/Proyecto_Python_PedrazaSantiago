@@ -108,4 +108,4 @@ def generar_reporte(periodo):
         print("Reporte no guardado.")
 
     input("\nPresione Enter para regresar al menú principal.")
-    os.system('clear')
+    os.system('cls')
