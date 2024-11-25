@@ -20,19 +20,19 @@ def designMenuReportGastos():
         
         match opcion:
             case 1:
-                os.system('cls')
+                os.system('clear')
                 generar_reporte("diario")
                 designMainMenu()
             case 2:
-                os.system('cls')
+                os.system('clear')
                 generar_reporte("semanal")
                 designMainMenu()
             case 3:
-                os.system('cls')
+                os.system('clear')
                 generar_reporte("mensual")
                 designMainMenu()
             case 4:
-                os.system('cls')
+                os.system('clear')
                 designMainMenu()
             case _: print("Opcion no valida")
     except ValueError:

@@ -24,6 +24,8 @@ Ingrese la información del gasto:""")
             raise ValueError("La categoría debe ser un texto válido.")
 
         descripcion = input("  - Descripción (opcional): ").strip()
+        if categoria.isdigit():
+            raise ValueError("La descripcion debe ser un texto válido.")
         if not descripcion:
             descripcion = "No proporcionada"
 
@@ -43,7 +45,7 @@ Ingrese 'S' para guardar o 'C' para cancelar.
                 "fecha": datetime.now().strftime('%d-%m-%Y')
             }
 
-            # Cargar o inicializar datos
+            # Cargar o iniciar datos
             if os.path.exists(ruta):
                 with open(ruta, 'r') as f:
                     try:
@@ -60,26 +62,26 @@ Ingrese 'S' para guardar o 'C' para cancelar.
             with open(ruta, 'w') as f:
                 json.dump(datos, f, indent=4)
 
-            os.system('cls')
+            os.system('clear')
             print("\n¡Gasto registrado con éxito!")
             return designMainMenu()
 
         elif save_cancel == 'C':
-            os.system('cls')
+            os.system('clear')
             print("\nEl registro ha sido cancelado.")
             return designMainMenu()
         else:
             print("\nOpción no válida. Intente de nuevo.")
             input("\nPresione Enter para continuar.")
-            os.system('cls')
+            os.system('clear')
             designRegistrar()
 
     except ValueError as e:
         print(f"\nError: {e}")
         input("\n-Los datos utilizados no son válidos. ¡Presione Enter para continuar!")
-        os.system('cls')
+        os.system('clear')
         designRegistrar()
 
     except KeyboardInterrupt:
         input("\n-No presione 'Ctrl + C'. ¡Presione Enter para continuar!")
-        os.system('cls')
+        os.system('clear')

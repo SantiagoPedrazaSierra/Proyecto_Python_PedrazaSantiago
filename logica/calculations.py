@@ -25,7 +25,7 @@ def calculos(periodo):
         print("No hay datos registrados para generar un reporte.")
         return
 
-    # Inicializar estructuras para los reportes
+    # Inicializar estructuras para los calculos
     totales = defaultdict(float)
     totales_por_categoria = defaultdict(float)
 
@@ -87,4 +87,4 @@ def calculos(periodo):
     print(calculo)
 
     input("\nPresione Enter para regresar al menú principal.")
-    os.system('cls')
+    os.system('clear')

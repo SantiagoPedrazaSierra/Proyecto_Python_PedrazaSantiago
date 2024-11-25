@@ -4,43 +4,8 @@
             "monto": 10000,
             "categoria": "comida",
             "descripcion": "No proporcionada",
-            "fecha": "24-11-2024"
-        },
-        {
-            "monto": 6000,
-            "categoria": "transporte",
-            "descripcion": "No proporcionada",
-            "fecha": "24-11-2024"
-        },
-        {
-            "monto": 2000,
-            "categoria": "entretenimiento",
-            "descripcion": "No proporcionada",
-            "fecha": "24-11-2024"
+            "fecha": "25-11-2024"
         }
     ],
-    "reportes": [
-        {
-            "reporte_diario": {
-                "totales": {
-                    "24-11-2024": 16000.0
-                },
-                "totales_por_categoria": {
-                    "comida": 10000.0,
-                    "transporte": 6000.0
-                }
-            }
-        },
-        {
-            "reporte_semanal": {
-                "totales": {
-                    "18-11-2024 - 24-11-2024": 16000.0
-                },
-                "totales_por_categoria": {
-                    "comida": 10000.0,
-                    "transporte": 6000.0
-                }
-            }
-        }
-    ]
+    "reportes": []
 }

@@ -23,23 +23,25 @@ def designMainMenu():
         
         match opcion:
             case 1:
-                os.system('cls')
+                os.system('clear')
                 designRegistrar()
             case 2:
-                os.system('cls')
+                os.system('clear')
                 designMenuListar()
             case 3:
-                os.system('cls')
+                os.system('clear')
                 designMenuCalcular()
             case 4:
-                os.system('cls')
+                os.system('clear')
                 designMenuReportGastos()
             case 5:
                 print("\n-Saliendo del programa...")
                 os._exit 
             case _: print("Opcion no valida")
     except ValueError:
+        os.system('clear')
         print("Por favor, ingrese un numero valido.")
+        designMainMenu()
 
         
 

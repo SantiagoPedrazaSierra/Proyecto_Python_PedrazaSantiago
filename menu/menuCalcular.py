@@ -19,19 +19,19 @@ def designMenuCalcular():
         
         match opcion:
             case 1:
-                os.system('cls')
+                os.system('clear')
                 calculos("diario")
                 designMainMenu()
             case 2:
-                os.system('cls')
+                os.system('clear')
                 calculos("semanal")
                 designMainMenu()
             case 3:
-                os.system('cls')
+                os.system('clear')
                 calculos("mensual")
                 designMainMenu()
             case 4:
-                os.system('cls')
+                os.system('clear')
                 designMainMenu()
                 
             case _: print("Opcion no valida")

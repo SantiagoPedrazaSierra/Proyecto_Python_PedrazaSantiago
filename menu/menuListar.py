@@ -39,7 +39,7 @@ def designMenuListar():
             case 1:
                 # Listar todos los gastos
                 if gastos:
-                    os.system('cls')
+                    os.system('clear')
                     print("\nLista de gastos:")
                     for i, gasto in enumerate(gastos, start=1):
                         print(f"\nGasto {i}:")
@@ -59,7 +59,7 @@ def designMenuListar():
                 gastos_filtrados = [gasto for gasto in gastos if categoria in gasto.get('categoria', '').lower()]
 
                 if gastos_filtrados:
-                    os.system('cls')
+                    os.system('clear')
                     print("\nGastos filtrados por categoría:")
                     for i, gasto in enumerate(gastos_filtrados, start=1):
                         print(f"\nGasto {i}:")
@@ -68,7 +68,7 @@ def designMenuListar():
                         print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
                         print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
                 else:
-                    os.system('cls')
+                    os.system('clear')
                     print("No se encontraron gastos para esa categoría.")
 
                 designMenuListar()
@@ -97,7 +97,7 @@ def designMenuListar():
                         continue
 
                 if gastos_filtrados:
-                    os.system('cls')
+                    os.system('clear')
                     print("\nGastos filtrados por rango de fechas:")
                     for i, gasto in enumerate(gastos_filtrados, start=1):
                         print(f"\nGasto {i}:")
@@ -106,14 +106,14 @@ def designMenuListar():
                         print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
                         print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
                 else:
-                    os.system('cls')
+                    os.system('clear')
                     print("No se encontraron gastos en el rango de fechas especificado.")
 
                 designMenuListar()
 
             case 4:
                 # Regresar al menú principal
-                os.system('cls')
+                os.system('clear')
                 designMainMenu()
 
             case _:
@@ -122,5 +122,5 @@ def designMenuListar():
     except ValueError:
         print("Por favor, ingrese un número válido.")
         input("Presione Enter para continuar...")
-        os.system('cls')
+        os.system('clear')
         designMenuListar()  # Volver a mostrar el menú
