@@ -1,8 +1,8 @@
 import os 
-
-
+from menu.mainMenu import designMainMenu
+from logica.calculations import calculos
 def designMenuCalcular():
-    from menu.mainMenu import designMainMenu
+    
     try:
         opcion=int(input("""
     =============================================
@@ -20,13 +20,20 @@ def designMenuCalcular():
         match opcion:
             case 1:
                 os.system('cls')
+                calculos("diario")
+                designMainMenu()
             case 2:
                 os.system('cls')
+                calculos("semanal")
+                designMainMenu()
             case 3:
                 os.system('cls')
+                calculos("mensual")
+                designMainMenu()
             case 4:
                 os.system('cls')
                 designMainMenu()
+                
             case _: print("Opcion no valida")
     except ValueError:
         print("Por favor, ingrese un numero valido.")

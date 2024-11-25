@@ -1,7 +1,8 @@
 import os 
-
+from logica.reporte import generar_reporte
+from menu.mainMenu import designMainMenu
 def designMenuReportGastos():
-    from menu.mainMenu import designMainMenu
+    
 
     try:
         opcion=int(input("""
@@ -20,10 +21,16 @@ def designMenuReportGastos():
         match opcion:
             case 1:
                 os.system('cls')
+                generar_reporte("diario")
+                designMainMenu()
             case 2:
                 os.system('cls')
+                generar_reporte("semanal")
+                designMainMenu()
             case 3:
                 os.system('cls')
+                generar_reporte("mensual")
+                designMainMenu()
             case 4:
                 os.system('cls')
                 designMainMenu()
