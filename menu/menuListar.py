@@ -3,6 +3,7 @@ import json
 import keyboard
 from menu.mainMenu import designMainMenu
 from datetime import datetime
+from tabulate import tabulate 
 
 def designMenuListar():
     ruta = 'datas/datagastos.json'
@@ -44,16 +45,22 @@ def designMenuListar():
                 if gastos:
                     os.system('cls')
                     print("\nLista de gastos:")
+                    #Datos tabular 
+                    tabla=[]
                     for i, gasto in enumerate(gastos, start=1):
-                        print(f"\nGasto {i}:")
-                        print(f"  - Monto: {gasto.get('monto', 'N/A')}")
-                        print(f"  - Categoría: {gasto.get('categoria', 'N/A')}")
-                        print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
-                        print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
+                        tabla.append([
+                            i,
+                            gasto.get('monto', 'N/A'),
+                            gasto.get('categoria', 'N/A'),
+                            gasto.get('descripcion', 'N/A'),
+                            gasto.get('fecha', 'N/A')
+                        ])
+                    #Tabla con tabulate
+                    print(tabulate(tabla, headers=["#Gasto", "Monto", "Categoría", "Descripción", "Fecha"], tablefmt="fancy_grid"))
                 else:
                     print("No hay gastos registrados.")
                 designMenuListar()
-
+                        
             case 2:
                 # Filtrar por categoría
                 categoria = input("\nIngrese la categoría que desea filtrar (ej. comida, transporte, etc.): ").strip().lower()
@@ -64,12 +71,18 @@ def designMenuListar():
                 if gastos_filtrados:
                     os.system('cls')
                     print("\nGastos filtrados por categoría:")
+                    f# Datos para tabular
+                    tabla = []
                     for i, gasto in enumerate(gastos_filtrados, start=1):
-                        print(f"\nGasto {i}:")
-                        print(f"  - Monto: {gasto.get('monto', 'N/A')}")
-                        print(f"  - Categoría: {gasto.get('categoria', 'N/A')}")
-                        print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
-                        print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
+                        tabla.append([
+                            i,
+                            gasto.get('monto', 'N/A'),
+                            gasto.get('categoria', 'N/A'),
+                            gasto.get('descripcion', 'N/A'),
+                            gasto.get('fecha', 'N/A')
+                        ])
+                    # Imprimimos la tabla con tabulate
+                    print(tabulate(tabla, headers=["#Gasto", "Monto", "Categoría", "Descripción", "Fecha"], tablefmt="fancy_grid"))
                 else:
                     os.system('cls')
                     print("No se encontraron gastos para esa categoría.")
@@ -102,12 +115,18 @@ def designMenuListar():
                 if gastos_filtrados:
                     os.system('cls')
                     print("\nGastos filtrados por rango de fechas:")
+                    # Datos para tabular
+                    tabla = []
                     for i, gasto in enumerate(gastos_filtrados, start=1):
-                        print(f"\nGasto {i}:")
-                        print(f"  - Monto: {gasto.get('monto', 'N/A')}")
-                        print(f"  - Categoría: {gasto.get('categoria', 'N/A')}")
-                        print(f"  - Descripción: {gasto.get('descripcion', 'N/A')}")
-                        print(f"  - Fecha: {gasto.get('fecha', 'N/A')}")
+                        tabla.append([
+                            i,
+                            gasto.get('monto', 'N/A'),
+                            gasto.get('categoria', 'N/A'),
+                            gasto.get('descripcion', 'N/A'),
+                            gasto.get('fecha', 'N/A')
+                        ])
+                    # Imprimimos la tabla con tabulate
+                    print(tabulate(tabla, headers=["#Gasto", "Monto", "Categoría", "Descripción", "Fecha"], tablefmt="fancy_grid"))
                 else:
                     os.system('cls')
                     print("No se encontraron gastos en el rango de fechas especificado.")

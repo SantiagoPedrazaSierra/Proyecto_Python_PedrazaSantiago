@@ -2,6 +2,7 @@ import os
 import json
 from datetime import datetime, timedelta
 from collections import defaultdict
+from tabulate import tabulate 
 
 def calculos(periodo):
     ruta = 'datas/datagastos.json'
@@ -69,22 +70,29 @@ def calculos(periodo):
         print(f"No hay gastos registrados para el período {periodo}.")
         return
 
-    # Generar el reporte en formato texto para el período seleccionado
-    calculo = f"\n=============================================\n"
-    calculo += f"          Calculo de Gastos ({periodo.capitalize()})\n"
-    calculo += f"=============================================\n\n"
-    calculo += f"Totales por {periodo}:\n"
+     # Crear los datos para la tabla de totales por periodo
+    tabla_totales = []
     for clave, total in totales.items():
-        calculo += f"  - {clave}: ${total:.2f}\n"
+        tabla_totales.append([clave, f"${total:.2f}"])
 
-    calculo += "\nGastos por Categoría:\n"
+    # Crear los datos para la tabla de gastos por categoría
+    tabla_categoria = []
     for categoria, total in totales_por_categoria.items():
-        calculo += f"  - {categoria.capitalize()}: ${total:.2f}\n"
+        tabla_categoria.append([categoria.capitalize(), f"${total:.2f}"])
 
-    calculo += "\n=============================================\n"
+    # Mostrar el reporte usando tabulate
+    os.system('cls')
+    print(f"\n=============================================")
+    print(f"          Calculo de Gastos ({periodo.capitalize()})")
+    print(f"=============================================\n")
 
-    # Mostrar el calculo al usuario y preguntar si desea guardarlo
-    print(calculo)
+    print(f"Totales por {periodo}:")
+    print(tabulate(tabla_totales, headers=["Período", "Total"], tablefmt="fancy_grid"))
+
+    print("\nGastos por Categoría:")
+    print(tabulate(tabla_categoria, headers=["Categoría", "Total"], tablefmt="fancy_grid"))
+
+    print(f"\n=============================================\n")
 
     input("\nPresione Enter para regresar al menú principal.")
     os.system('cls')
